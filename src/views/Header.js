@@ -9,12 +9,12 @@ import Menu from "nav/Menu";
 const Header = () => (
   <Container fluid>
     <Row className="logo-container">
-      <Col>
-        <img src={logo} alt="logo" className="mt-5 mb-4" />
+      <Col className="my-4">
+        <img src={logo} alt="logo" />
       </Col>
     </Row>
     <Row>
-      <Col>
+      <Col className="my-2">
         <Menu />
       </Col>
     </Row>

@@ -46,7 +46,7 @@ const topMenuItems = () => {
     },
     {
       title: "ABOUT",
-      path: "about",
+      path: "about/55",
     },
     {
       title: "CONTACT",

@@ -8,13 +8,15 @@ import Menu from "nav/Menu";
 
 const Header = () => (
   <Container fluid>
-    <Row className="logo-row-border">
-      <Col className="logo-container">
-        <img src={logo} alt="logo" className="my-5" />
+    <Row className="logo-container">
+      <Col>
+        <img src={logo} alt="logo" className="mt-5 mb-4" />
       </Col>
     </Row>
     <Row>
-      <Menu />
+      <Col>
+        <Menu />
+      </Col>
     </Row>
   </Container>
 );

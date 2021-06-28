@@ -9,10 +9,10 @@ const Routes = () => (
     <Route path="/blog">
       <Blog />
     </Route>
-    <Route path="/ex2">
+    <Route path="/features/feature1">
       <Example2 />
     </Route>
-    <Route path="/ex3">
+    <Route path="/contact">
       <Example3 />
     </Route>
     {/* fallback address for any other paths */}

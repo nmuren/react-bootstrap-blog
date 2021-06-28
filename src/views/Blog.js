@@ -3,7 +3,7 @@ import Container from "react-bootstrap/Container";
 
 const Blog = () => (
   <Container>
-    <div>Blog</div>
+    <h3>Blog</h3>
   </Container>
 );
 

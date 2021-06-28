@@ -1,11 +1,12 @@
 $primary-font-family: "Poppins", Verdana, sans-serif;
 $secondary-font-family: Georgia, Times, serif;
-$primary-background-color: #ecf0f1;
+$primary-background-color: #ffffff;
+$secondary-background-color: #ecf0f1;
 
 body {
   margin: 0;
-  font-family: $primary-font-family;
   background-color: $primary-background-color;
+  font-family: $primary-font-family;
 }
 
 h1,
@@ -18,13 +19,11 @@ h6 {
 }
 
 .logo-container {
-  display: flex;
-  justify-content: center;
-}
-
-.logo-row-border {
   border-bottom: 1px solid #bdc3c7;
+  div {
+    display: flex;
+    justify-content: center;
+  }
 }
 
-@import "~bootstrap/scss/bootstrap";
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;1,400;1,700&display=swap");

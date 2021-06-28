@@ -1,24 +1,13 @@
-import logo from "./logo.svg";
+import React from "react";
+import { MainProvider } from "store/MainStore";
+import Content from "views/Content";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => (
+  <MainProvider>
+    <div>this is head</div>
+    <Content />
+    <div>this is foot</div>
+  </MainProvider>
+);
 
 export default App;

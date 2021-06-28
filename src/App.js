@@ -1,12 +1,18 @@
 import React from "react";
+import { BrowserRouter as Router } from "react-router-dom";
+
 import { MainProvider } from "store/MainStore";
-import Content from "views/Content";
+import Routes from "nav/Routes";
+import Header from "views/Header";
+import Footer from "views/Footer";
 
 const App = () => (
   <MainProvider>
-    <div>this is head</div>
-    <Content />
-    <div>this is foot</div>
+    <Router>
+      <Header />
+      <Routes />
+      <Footer />
+    </Router>
   </MainProvider>
 );
 

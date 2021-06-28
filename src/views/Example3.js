@@ -1,21 +1,5 @@
 import React from "react";
 
-const Example3 = () => (
-  <div className="App">
-    <header className="App-header">
-      <p>
-        Edit <code>src/App.js</code> and save to reload.
-      </p>
-      <a
-        className="App-link"
-        href="https://reactjs.org"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Learn React - 3
-      </a>
-    </header>
-  </div>
-);
+const Example3 = () => <div className="App">Example3</div>;
 
 export default Example3;

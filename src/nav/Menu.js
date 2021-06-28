@@ -30,7 +30,7 @@ const ItemGenerator = (props) => {
         </NavDropdown>
       ) : (
         <LinkContainer to={linkPath}>
-          <Nav.Link>{title}</Nav.Link>
+          <Nav.Link active={false}>{title}</Nav.Link>
         </LinkContainer>
       )}
     </>

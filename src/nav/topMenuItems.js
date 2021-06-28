@@ -2,7 +2,7 @@ const topMenuItems = () => {
   const menuItems = [
     {
       title: "HOME",
-      path: "",
+      path: "home",
     },
     {
       title: "FEATURES",

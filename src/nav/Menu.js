@@ -41,11 +41,11 @@ const Menu = () => {
   const menuItems = topMenuItems() || [];
 
   return (
-    <Navbar expand="lg">
+    <Navbar expand="md">
       <Container>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
+          <Nav className="me-auto top-navigation">
             {menuItems.map((item) => (
               <ItemGenerator item={item} prefix="" key={keyGenerator()} />
             ))}

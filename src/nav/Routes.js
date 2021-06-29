@@ -9,14 +9,14 @@ const Routes = () => (
     <Route path="/blog">
       <Blog />
     </Route>
-    <Route path="/blog:search">
+    <Route path="/blog/:search">
       <Blog />
     </Route>
-    <Route path="/post:postId">
+    <Route path="/post/:postId">
       <PostDetail />
     </Route>
     {/* fallback address for any other paths */}
-    {/* <Redirect to="/blog" /> */}
+    <Redirect to="/blog" />
   </Switch>
 );
 

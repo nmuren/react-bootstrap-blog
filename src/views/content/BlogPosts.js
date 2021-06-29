@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Spinner from "react-bootstrap/Spinner";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
+import { useLocation } from "react-router-dom";
 
 import { getAllPosts } from "service/posts";
 import StyledCard from "components/StyledCard";
@@ -17,6 +18,7 @@ const BlogPosts = (props) => {
   const [authors, setAuthors] = useState();
   const [pagedData, setPagedData] = useState([]);
   const [active, setActive] = useState(1);
+  const filter = useLocation().pathname.split("/")[2];
 
   const onPaginationChange = (activePage) => {
     setActive(activePage);
@@ -45,14 +47,21 @@ const BlogPosts = (props) => {
       getAllPosts()
         .then(handleResponse)
         .then((jsonData) => {
+          const postData = [];
           jsonData.forEach((item) => {
-            item.img = `/assets/img/dummy${
-              Number.parseInt(Math.random() * 6) + 1
-            }.jpg`;
-            let [, month, day, year] = new Date().toDateString().split(" ");
-            item.date = `${day} ${month}, ${year}`;
+            if (
+              !filter ||
+              item.title.toLowerCase().includes(filter.toLowerCase())
+            ) {
+              item.img = `/assets/img/dummy${
+                Number.parseInt(Math.random() * 6) + 1
+              }.jpg`;
+              let [, month, day, year] = new Date().toDateString().split(" ");
+              item.date = `${day} ${month}, ${year}`;
+              postData.push(item);
+            }
           });
-          setData(jsonData);
+          setData(postData);
           resolve();
         });
     });
@@ -75,7 +84,7 @@ const BlogPosts = (props) => {
         setLoading(false);
       })
       .catch(console.error);
-  }, []);
+  }, [filter]);
 
   return (
     <div className={props.className}>
@@ -86,18 +95,22 @@ const BlogPosts = (props) => {
       ) : (
         <>
           <Row>
-            {pagedData.map((item, index) => (
-              <Col key={keyGenerator()} className="mt-4" xl={6}>
-                <StyledCard
-                  url={`/blog/${item.id}`}
-                  img={item.img}
-                  title={item.title}
-                  author={authors ? authors.get(item.userId) : null}
-                  date={item.date}
-                  text={item.body}
-                />
-              </Col>
-            ))}
+            {pagedData.length > 0 ? (
+              pagedData.map((item, index) => (
+                <Col key={keyGenerator()} className="mt-4" xl={6}>
+                  <StyledCard
+                    url={`/blog/post/${item.id}`}
+                    img={item.img}
+                    title={item.title}
+                    author={authors ? authors.get(item.userId) : null}
+                    date={item.date}
+                    text={item.body}
+                  />
+                </Col>
+              ))
+            ) : (
+              <Col>No data found...</Col>
+            )}
           </Row>
           <Row className="mt-4">
             <Col>

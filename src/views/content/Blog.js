@@ -4,7 +4,8 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
 import TitleBar from "views/TitleBar";
-import BlogPosts from "./BlogPosts";
+import BlogPosts from "views/content/BlogPosts";
+import SideBar from "views/SideBar";
 
 const Blog = () => {
   const breadcrump = [
@@ -22,11 +23,8 @@ const Blog = () => {
           <Col lg={9}>
             <BlogPosts className="main" />
           </Col>
-          <Col lg={3}>
-            <div className="sidebar mt-4">
-              aaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaa
-              aaaaaaaaaaaaaaaaa
-            </div>
+          <Col lg={3} className="p-0">
+            <SideBar className="sidebar mt-4" />
           </Col>
         </Row>
       </Container>

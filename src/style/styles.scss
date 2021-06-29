@@ -73,10 +73,6 @@ h6 {
   }
 }
 
-.sidebar {
-  max-width: 18.75rem;
-}
-
 .spinner-border {
   border-color: $tertiary-color;
   border-right-color: transparent;
@@ -95,6 +91,7 @@ h6 {
     color: $primary-text-color;
     &:hover {
       color: #0056b3;
+      text-underline-offset: 0.1rem;
     }
   }
 
@@ -134,6 +131,31 @@ h6 {
     .custom-pagination-active {
       padding: 0 0.5rem;
       border-bottom: 0.1rem solid $primary-text-color;
+    }
+  }
+}
+
+.sidebar {
+  max-width: 18.75rem;
+  .card {
+    border: none;
+  }
+}
+
+.custom-searcbox {
+  .form-control {
+    border-radius: 7px;
+    border: 1.5px solid $secondary-color;
+    background-color: $secondary-color;
+    height: 3rem;
+    &:focus {
+      box-shadow: none;
+    }
+  }
+  .input-group-append {
+    button {
+      background-color: $secondary-color;
+      border: none;
     }
   }
 }

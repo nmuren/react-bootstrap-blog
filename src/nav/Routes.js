@@ -18,6 +18,9 @@ const Routes = () => (
     <Route path="/contact">
       <Example3 />
     </Route>
+    <Route path="/blog:search">
+      <Blog />
+    </Route>
     {/* fallback address for any other paths */}
     <Redirect to="/blog" />
   </Switch>

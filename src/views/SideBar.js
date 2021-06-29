@@ -1,5 +1,13 @@
 import React from "react";
 
-const SideBar = () => <></>;
+import SearchBox from "components/SearchBox";
+
+const SideBar = (props) => {
+  return (
+    <div className={props.className}>
+      <SearchBox baseUrl="/blog" />
+    </div>
+  );
+};
 
 export default SideBar;

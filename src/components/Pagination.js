@@ -6,7 +6,7 @@ const Pagination = (props) => {
   const [items, setItems] = useState([]);
 
   const pageCount = useMemo(
-    () => Math.ceil(total / dataPerPage),
+    () => Math.ceil(total / Math.max(1, dataPerPage)),
     [total, dataPerPage]
   );
 
@@ -14,19 +14,23 @@ const Pagination = (props) => {
     const listItems = [];
 
     const handlePageChange = (event) => {
-      onChange(event.target.name);
+      onChange(Number.parseInt(event.target.innerText));
     };
 
     for (let i = 1; i <= pageCount; i++) {
       listItems.push(
         <button
           type="button"
-          name={i}
-          className={active === i ? "custom-pagination-active" : ""}
+          className="mb-3"
           onClick={handlePageChange}
           key={keyGenerator()}
         >
-          {i}
+          <span
+            className={active === i ? "custom-pagination-active" : "text-muted"}
+            name={i}
+          >
+            {i}
+          </span>
         </button>
       );
     }

@@ -9,7 +9,7 @@ import { keyGenerator } from "utils/commonUtils";
 import { getAllUsers } from "service/users";
 import Pagination from "components/Pagination";
 
-const POST_PER_PAGE = 2;
+const POST_PER_PAGE = 4;
 
 const BlogPosts = (props) => {
   const [loading, setLoading] = useState(true);
@@ -26,13 +26,6 @@ const BlogPosts = (props) => {
     if (data && active) {
       const startOrder = (active - 1) * POST_PER_PAGE;
       const endOrder = Math.min(startOrder + POST_PER_PAGE, data.length);
-      console.log(
-        "🚀 ~ file: BlogPosts.js ~ line 27 ~ useEffect ~ startOrder",
-        startOrder,
-        startOrder + POST_PER_PAGE,
-        data.length,
-        endOrder
-      );
       const parsedData = data.slice(startOrder, endOrder);
       setPagedData(parsedData);
     }
@@ -106,7 +99,7 @@ const BlogPosts = (props) => {
               </Col>
             ))}
           </Row>
-          <Row>
+          <Row className="mt-4">
             <Col>
               <Pagination
                 active={active}

@@ -30,7 +30,7 @@ h6 {
 }
 
 .logo-container {
-  border-bottom: 2px solid $secondary-color;
+  border-bottom: 0.125rem solid $secondary-color;
   div {
     display: flex;
     justify-content: center;
@@ -51,7 +51,7 @@ h6 {
 .titleBar {
   background: lightblue url("/assets/img/title-bar-image.jpg") no-repeat center;
   background-size: cover;
-  height: 150px;
+  height: 9.5rem;
   display: flex;
   align-items: center;
 
@@ -74,7 +74,7 @@ h6 {
 }
 
 .sidebar {
-  max-width: 300px;
+  max-width: 18.75rem;
 }
 
 .spinner-border {
@@ -89,7 +89,6 @@ h6 {
 }
 
 .card {
-  // min-width: 23rem;
   height: 100%;
 
   .card-body a {
@@ -111,7 +110,7 @@ h6 {
     display: flex;
     justify-content: space-between;
     img {
-      margin-right: 5px;
+      margin-right: 0.32rem;
     }
   }
 
@@ -123,6 +122,19 @@ h6 {
 
   .card-text {
     @include text-line-limit(3);
+  }
+}
+
+.custom-pagination {
+  button {
+    border: none;
+    background: none;
+    min-width: 2.5rem;
+    padding: 0 0.5rem;
+    .custom-pagination-active {
+      padding: 0 0.5rem;
+      border-bottom: 0.1rem solid $primary-text-color;
+    }
   }
 }
 

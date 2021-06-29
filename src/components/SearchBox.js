@@ -24,7 +24,7 @@ const SearchBox = (props) => {
             }}
           />
           <InputGroup.Append>
-            <button type="submit">
+            <button type="button">
               <Link to={`${baseUrl}/${searchText}`}>
                 <img src={search} alt="search" width="24" height="24" />
               </Link>

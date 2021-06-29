@@ -10,7 +10,7 @@ import { keyGenerator } from "utils/commonUtils";
 import { getAllUsers } from "service/users";
 import Pagination from "components/Pagination";
 
-const POST_PER_PAGE = 4;
+const POST_PER_PAGE = 12;
 
 const BlogPosts = (props) => {
   const [loading, setLoading] = useState(true);
@@ -87,9 +87,13 @@ const BlogPosts = (props) => {
   }, [filter]);
 
   return (
-    <div className={props.className}>
+    <div
+      className={`${props.className} ${
+        loading && pagedData ? "center-item mt-5" : ""
+      }`}
+    >
       {loading && pagedData ? (
-        <Spinner animation="border" role="status">
+        <Spinner animation="border" className="mt-4" role="status">
           <span className="sr-only">Loading...</span>
         </Spinner>
       ) : (
@@ -112,7 +116,7 @@ const BlogPosts = (props) => {
               <Col>No data found...</Col>
             )}
           </Row>
-          <Row className="mt-4">
+          <Row className="my-4">
             <Col>
               <Pagination
                 active={active}

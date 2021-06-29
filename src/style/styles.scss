@@ -14,6 +14,11 @@ $tertiary-color: #37bd9cff;
   -webkit-box-orient: vertical;
 }
 
+@mixin green-button-comment() {
+  background-color: $tertiary-color;
+  border-color: $tertiary-color;
+}
+
 body {
   margin: 0;
   background-color: $primary-color;
@@ -69,7 +74,7 @@ h6 {
 }
 
 .titleBar {
-  background: lightblue url("/assets/img/title-bar-image.jpg") no-repeat center;
+  background: white url("/assets/img/title-bar-image.jpg") no-repeat center;
   background-size: cover;
   height: 9.5rem;
   display: flex;
@@ -98,6 +103,12 @@ h6 {
   border-right-color: transparent;
   width: 3rem;
   height: 3rem;
+}
+
+.center-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .hidden-class {
@@ -133,10 +144,10 @@ h6 {
   .card-subtitle,
   .card-text {
     font-size: smaller;
-    line-height: normal;
   }
 
   .card-text {
+    line-height: 1.5rem;
     @include text-line-limit(3);
   }
 }
@@ -193,15 +204,21 @@ h6 {
 .thumbnail-img {
   max-width: 5rem;
 }
+@mixin name {
+}
 
 .green-button {
   border-radius: 0;
-  border-color: $secondary-text-color;
+  border-color: rgba(127, 140, 141, 0.2);
   text-transform: uppercase;
   &:hover {
-    background-color: $tertiary-color;
-    border-color: $tertiary-color;
+    @include green-button-comment();
   }
+}
+
+.submit-style {
+  color: $primary-color;
+  @include green-button-comment();
 }
 
 .css-banner {
@@ -217,6 +234,11 @@ h6 {
   div {
     display: grid;
   }
+}
+
+.letter-border {
+  border: 0.5rem solid white !important;
+  border-image: url("/assets/img/stripes-image.png") 10 round !important;
 }
 
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;0,700;1,400&display=swap");

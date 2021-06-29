@@ -1,9 +1,10 @@
 import React from "react";
 
-import SearchBox from "components/SearchBox";
-import SideList from "components/SideList";
 import LatestPosts from "views/content/LatestPosts";
 import RecentComments from "views/content/RecentComments";
+import Newsletter from "views/content/Newsletter";
+import SearchBox from "components/SearchBox";
+import SideList from "components/SideList";
 import TagList from "components/TagList";
 import Banner from "components/Banner";
 
@@ -83,6 +84,7 @@ const SideBar = (props) => {
     <div className={props.className}>
       <SearchBox baseUrl="/blog" />
       <SideList title="CATEGORIES" items={categoryList} />
+      <Newsletter title="NEWSLETTER" />
       <LatestPosts title="LATEST POSTS" />
       <RecentComments title="RECENT COMMENTS" />
       <SideList title="ARCHIVES" items={archiveList} />

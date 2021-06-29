@@ -29,6 +29,14 @@ h6 {
   font-family: $secondary-font;
 }
 
+.black-text {
+  color: $primary-text-color;
+}
+.space-between {
+  display: flex;
+  justify-content: space-between;
+}
+
 .logo-container {
   border-bottom: 0.125rem solid $secondary-color;
   div {
@@ -88,7 +96,7 @@ h6 {
   height: 100%;
 
   .card-body a {
-    color: $primary-text-color;
+    @extend .black-text;
     &:hover {
       color: #0056b3;
       text-underline-offset: 0.1rem;
@@ -104,8 +112,7 @@ h6 {
   }
 
   .card-subtitle {
-    display: flex;
-    justify-content: space-between;
+    @extend .space-between;
     img {
       margin-right: 0.32rem;
     }
@@ -139,6 +146,10 @@ h6 {
   max-width: 18.75rem;
   .card {
     border: none;
+    hr {
+      width: 3rem;
+      border-top: 1px solid $primary-text-color;
+    }
   }
 }
 

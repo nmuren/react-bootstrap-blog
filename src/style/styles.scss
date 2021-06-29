@@ -33,6 +33,13 @@ h6 {
   color: $primary-text-color;
 }
 
+.hover-green:hover {
+  .black-text {
+    color: $tertiary-color;
+    text-decoration: none;
+  }
+}
+
 .space-between {
   display: flex;
   justify-content: space-between;

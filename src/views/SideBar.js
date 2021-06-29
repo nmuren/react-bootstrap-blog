@@ -3,6 +3,7 @@ import React from "react";
 import SearchBox from "components/SearchBox";
 import SideList from "components/SideList";
 import LatestPosts from "views/content/LatestPosts";
+import RecentComments from "views/content/RecentComments";
 
 const SideBar = (props) => {
   const categoryList = [
@@ -81,6 +82,7 @@ const SideBar = (props) => {
       <SearchBox baseUrl="/blog" />
       <SideList title="CATEGORIES" items={categoryList} />
       <LatestPosts title="LATEST POSTS" />
+      <RecentComments title="RECENT COMMENTS" />
       <SideList title="ARCHIVES" items={archiveList} />
     </div>
   );

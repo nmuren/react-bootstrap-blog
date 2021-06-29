@@ -3,7 +3,7 @@ import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
 
 import { keyGenerator } from "utils/commonUtils";
-import SideCardTemplate from "./SideCardTemplate";
+import SideCardTemplate from "components/SideCardTemplate";
 
 const SideList = (props) => {
   const { title, items } = props;

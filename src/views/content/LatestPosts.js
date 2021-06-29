@@ -43,7 +43,7 @@ const LatestPosts = (props) => {
 
   return (
     <SideCardTemplate title={props.title} className={props.className}>
-      <Card.Body className="pt-0">
+      <Card.Body className="pt-0 mt-2">
         {loading && data ? (
           <Spinner animation="border" role="status">
             <span className="sr-only">Loading...</span>

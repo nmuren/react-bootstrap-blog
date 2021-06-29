@@ -4,6 +4,8 @@ import SearchBox from "components/SearchBox";
 import SideList from "components/SideList";
 import LatestPosts from "views/content/LatestPosts";
 import RecentComments from "views/content/RecentComments";
+import TagList from "components/TagList";
+import Banner from "components/Banner";
 
 const SideBar = (props) => {
   const categoryList = [
@@ -84,6 +86,8 @@ const SideBar = (props) => {
       <LatestPosts title="LATEST POSTS" />
       <RecentComments title="RECENT COMMENTS" />
       <SideList title="ARCHIVES" items={archiveList} />
+      <TagList title="TAGS CLOUD" items={categoryList} />
+      <Banner />
     </div>
   );
 };

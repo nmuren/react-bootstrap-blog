@@ -194,4 +194,29 @@ h6 {
   max-width: 5rem;
 }
 
+.green-button {
+  border-radius: 0;
+  border-color: $secondary-text-color;
+  text-transform: uppercase;
+  &:hover {
+    background-color: $tertiary-color;
+    border-color: $tertiary-color;
+  }
+}
+
+.css-banner {
+  width: 100%;
+  height: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $primary-color;
+  font-weight: 600;
+  border: 0.5rem solid $tertiary-color;
+
+  div {
+    display: grid;
+  }
+}
+
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;0,700;1,400&display=swap");

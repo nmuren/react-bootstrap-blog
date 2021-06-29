@@ -1,8 +1,17 @@
 $primary-font: "Poppins", Verdana, sans-serif;
 $secondary-font: Georgia, Times, serif;
+$secondary-text-color: #7f8c8d;
 $primary-color: #ffffff;
 $secondary-color: #f6f7fbff;
 $tertiary-color: #37bd9cff;
+
+@mixin text-line-limit($line) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: $line;
+  -webkit-box-orient: vertical;
+}
 
 body {
   margin: 0;
@@ -39,7 +48,7 @@ h6 {
 }
 
 .titleBar {
-  background: lightblue url("/assets/titleBarImage.jpg") no-repeat center;
+  background: lightblue url("/assets/img/title-bar-image.jpg") no-repeat center;
   background-size: cover;
   height: 150px;
   display: flex;
@@ -63,9 +72,8 @@ h6 {
   }
 }
 
-.content-container {
-  display: grid;
-  grid-template-columns: auto auto;
+.sidebar {
+  max-width: 300px;
 }
 
 .spinner-border {
@@ -73,6 +81,41 @@ h6 {
   border-right-color: transparent;
   width: 3rem;
   height: 3rem;
+}
+
+.hidden-class {
+  visibility: hidden;
+}
+
+.card {
+  // min-width: 23rem;
+  height: 100%;
+
+  .card-title {
+    text-transform: capitalize;
+    font-family: $secondary-font;
+    font-weight: bold;
+    @include text-line-limit(2);
+    height: 2.5em;
+  }
+
+  .card-subtitle {
+    display: flex;
+    justify-content: space-between;
+    img {
+      margin-right: 5px;
+    }
+  }
+
+  .card-subtitle,
+  .card-text {
+    font-size: smaller;
+    line-height: normal;
+  }
+
+  .card-text {
+    @include text-line-limit(3);
+  }
 }
 
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;0,700;1,400&display=swap");

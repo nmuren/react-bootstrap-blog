@@ -1,50 +1,84 @@
 import React, { useEffect, useState } from "react";
 import Spinner from "react-bootstrap/Spinner";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
 
 import { getAllPosts } from "service/posts";
 import StyledCard from "components/StyledCard";
+import { keyGenerator } from "utils/commonUtils";
+import { getAllUsers } from "service/users";
 
 const BlogPosts = (props) => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
+  const [authors, setAuthors] = useState();
 
   useEffect(() => {
-    getAllPosts()
-      .then((res) => {
-        const { status } = res;
-        if (status !== 200) {
-          throw "Data call is unsuccessful!";
-        } else {
-          return res.json();
-        }
-      })
-      .then((jsonData) => {
-        setData(jsonData);
+    const handleResponse = (res) => {
+      const { status } = res;
+      if (status !== 200) {
+        new Error("Data call is unsuccessful!");
+      } else {
+        return res.json();
+      }
+    };
+
+    const postPromise = new Promise((resolve) => {
+      getAllPosts()
+        .then(handleResponse)
+        .then((jsonData) => {
+          jsonData.forEach((item) => {
+            item.img = `/assets/img/dummy${
+              Number.parseInt(Math.random() * 6) + 1
+            }.jpg`;
+            item.date = new Date().toDateString();
+          });
+          setData(jsonData);
+          resolve();
+        });
+    });
+
+    const authorPromise = new Promise((resolve) => {
+      getAllUsers()
+        .then(handleResponse)
+        .then((jsonData) => {
+          let authorMap = new Map();
+          jsonData.forEach((item) => {
+            authorMap.set(item.id, item.name);
+          });
+          setAuthors(authorMap);
+          resolve();
+        });
+    });
+
+    Promise.all([postPromise, authorPromise])
+      .then(() => {
         setLoading(false);
-        // body: "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
-        // id: 1
-        // title: "sunt aut facere repellat provident occaecati excepturi optio reprehenderit"
-        // userId: 1
-      });
+      })
+      .catch(console.error);
   }, []);
 
   return (
-    <div>
+    <div className={props.className}>
       {loading && data ? (
-        <Spinner animation="border" role="status" className={props.className}>
+        <Spinner animation="border" role="status">
           <span className="sr-only">Loading...</span>
         </Spinner>
       ) : (
-        data.map((item) => (
-          <StyledCard
-            postId={item.id}
-            img=""
-            title={item.title}
-            author={item.userId}
-            date=""
-            text={item.body}
-          />
-        ))
+        <Row>
+          {data.map((item, index) => (
+            <Col key={keyGenerator()} className="mt-4" xl={6}>
+              <StyledCard
+                url={`/blog/${item.id}`}
+                img={item.img}
+                title={item.title}
+                author={authors ? authors.get(item.userId) : null}
+                date={item.date}
+                text={item.body}
+              />
+            </Col>
+          ))}
+        </Row>
       )}
     </div>
   );

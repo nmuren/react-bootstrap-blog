@@ -1,5 +1,6 @@
 $primary-font: "Poppins", Verdana, sans-serif;
 $secondary-font: Georgia, Times, serif;
+$primary-text-color: #000000;
 $secondary-text-color: #7f8c8d;
 $primary-color: #ffffff;
 $secondary-color: #f6f7fbff;
@@ -90,6 +91,13 @@ h6 {
 .card {
   // min-width: 23rem;
   height: 100%;
+
+  .card-body a {
+    color: $primary-text-color;
+    &:hover {
+      color: #0056b3;
+    }
+  }
 
   .card-title {
     text-transform: capitalize;

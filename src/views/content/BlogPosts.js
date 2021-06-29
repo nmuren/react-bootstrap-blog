@@ -7,11 +7,36 @@ import { getAllPosts } from "service/posts";
 import StyledCard from "components/StyledCard";
 import { keyGenerator } from "utils/commonUtils";
 import { getAllUsers } from "service/users";
+import Pagination from "components/Pagination";
+
+const POST_PER_PAGE = 2;
 
 const BlogPosts = (props) => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
   const [authors, setAuthors] = useState();
+  const [pagedData, setPagedData] = useState([]);
+  const [active, setActive] = useState(1);
+
+  const onPaginationChange = (activePage) => {
+    setActive(activePage);
+  };
+
+  useEffect(() => {
+    if (data && active) {
+      const startOrder = (active - 1) * POST_PER_PAGE;
+      const endOrder = Math.min(startOrder + POST_PER_PAGE, data.length);
+      console.log(
+        "🚀 ~ file: BlogPosts.js ~ line 27 ~ useEffect ~ startOrder",
+        startOrder,
+        startOrder + POST_PER_PAGE,
+        data.length,
+        endOrder
+      );
+      const parsedData = data.slice(startOrder, endOrder);
+      setPagedData(parsedData);
+    }
+  }, [data, active]);
 
   useEffect(() => {
     const handleResponse = (res) => {
@@ -31,7 +56,8 @@ const BlogPosts = (props) => {
             item.img = `/assets/img/dummy${
               Number.parseInt(Math.random() * 6) + 1
             }.jpg`;
-            item.date = new Date().toDateString();
+            let [, month, day, year] = new Date().toDateString().split(" ");
+            item.date = `${day} ${month}, ${year}`;
           });
           setData(jsonData);
           resolve();
@@ -60,25 +86,37 @@ const BlogPosts = (props) => {
 
   return (
     <div className={props.className}>
-      {loading && data ? (
+      {loading && pagedData ? (
         <Spinner animation="border" role="status">
           <span className="sr-only">Loading...</span>
         </Spinner>
       ) : (
-        <Row>
-          {data.map((item, index) => (
-            <Col key={keyGenerator()} className="mt-4" xl={6}>
-              <StyledCard
-                url={`/blog/${item.id}`}
-                img={item.img}
-                title={item.title}
-                author={authors ? authors.get(item.userId) : null}
-                date={item.date}
-                text={item.body}
+        <>
+          <Row>
+            {pagedData.map((item, index) => (
+              <Col key={keyGenerator()} className="mt-4" xl={6}>
+                <StyledCard
+                  url={`/blog/${item.id}`}
+                  img={item.img}
+                  title={item.title}
+                  author={authors ? authors.get(item.userId) : null}
+                  date={item.date}
+                  text={item.body}
+                />
+              </Col>
+            ))}
+          </Row>
+          <Row>
+            <Col>
+              <Pagination
+                active={active}
+                total={data.length}
+                dataPerPage={POST_PER_PAGE}
+                onChange={onPaginationChange}
               />
             </Col>
-          ))}
-        </Row>
+          </Row>
+        </>
       )}
     </div>
   );

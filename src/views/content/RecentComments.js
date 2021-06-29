@@ -31,7 +31,7 @@ const RecentComments = (props) => {
           }.jpg`;
           let [, month, day, year] = new Date().toDateString().split(" ");
           item.date = `${day} ${month}, ${year}`;
-          item.url = `/blog/post/${item.id}`;
+          item.url = `/post/${item.id}`;
 
           return item;
         });
@@ -57,7 +57,7 @@ const RecentComments = (props) => {
                 className="hover-green px-1"
                 key={keyGenerator()}
               >
-                <Link to={`/blog/post/${item.postId}`}>
+                <Link to={`/post/${item.postId}`}>
                   <span className="black-text">{item.email.split("@")[0]}</span>
                   <span className="text-muted"> on </span>
                   <span className="black-text">{item.name}</span>

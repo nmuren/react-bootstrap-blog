@@ -30,7 +30,7 @@ const LatestPosts = (props) => {
           }.jpg`;
           let [, month, day, year] = new Date().toDateString().split(" ");
           item.date = `${day} ${month}, ${year}`;
-          item.url = `/blog/post/${item.id}`;
+          item.url = `/post/${item.id}`;
 
           return item;
         });

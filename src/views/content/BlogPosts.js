@@ -103,7 +103,7 @@ const BlogPosts = (props) => {
               pagedData.map((item, index) => (
                 <Col key={keyGenerator()} className="mt-4" xl={6}>
                   <StyledCard
-                    url={`/blog/post/${item.id}`}
+                    url={`/post/${item.id}`}
                     img={item.img}
                     title={item.title}
                     author={authors ? authors.get(item.userId) : null}

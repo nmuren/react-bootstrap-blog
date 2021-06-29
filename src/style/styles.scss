@@ -14,9 +14,19 @@ $tertiary-color: #37bd9cff;
   -webkit-box-orient: vertical;
 }
 
-@mixin green-button-comment() {
+@mixin green-button-comment {
   background-color: $tertiary-color;
   border-color: $tertiary-color;
+}
+
+@mixin card-line {
+  .card {
+    border: none;
+    hr {
+      width: 3rem;
+      border-top: 1px solid $primary-text-color;
+    }
+  }
 }
 
 body {
@@ -95,6 +105,7 @@ h6 {
 
   .current {
     color: $tertiary-color;
+    text-transform: capitalize;
   }
 }
 
@@ -115,8 +126,11 @@ h6 {
   visibility: hidden;
 }
 
-.card {
-  height: 100%;
+.styled-card,
+.side-card-template {
+  &:not(.not-full-height) {
+    height: 100%;
+  }
 
   .card-body a {
     @extend .black-text;
@@ -167,13 +181,11 @@ h6 {
 
 .sidebar {
   max-width: 18.75rem;
-  .card {
-    border: none;
-    hr {
-      width: 3rem;
-      border-top: 1px solid $primary-text-color;
-    }
-  }
+  @include card-line;
+}
+
+.recommendation {
+  @include card-line;
 }
 
 .custom-searcbox {
@@ -212,13 +224,13 @@ h6 {
   border-color: rgba(127, 140, 141, 0.2);
   text-transform: uppercase;
   &:hover {
-    @include green-button-comment();
+    @include green-button-comment;
   }
 }
 
 .submit-style {
   color: $primary-color;
-  @include green-button-comment();
+  @include green-button-comment;
 }
 
 .css-banner {
@@ -239,6 +251,10 @@ h6 {
 .letter-border {
   border: 0.5rem solid white !important;
   border-image: url("/assets/img/stripes-image.png") 10 round !important;
+}
+
+.detail-container {
+  background-color: $primary-color;
 }
 
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;0,700;1,400&display=swap");

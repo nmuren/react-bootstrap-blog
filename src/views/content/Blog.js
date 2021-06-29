@@ -17,8 +17,7 @@ const Blog = () => {
   return (
     <div className="content">
       <TitleBar title="Blog" breadcrump={breadcrump} />
-
-      <Container className="content-container mt-3">
+      <Container className="mt-3">
         <Row>
           <Col lg={9}>
             <BlogPosts className="main" />

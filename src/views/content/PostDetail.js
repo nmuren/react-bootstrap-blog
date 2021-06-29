@@ -10,6 +10,8 @@ import SideBar from "views/SideBar";
 import StyledCard from "components/StyledCard";
 import { getPostById } from "service/posts";
 import Recommendations from "views/content/Recommendations";
+import Comments from "views/content/Comments";
+import { responeStatusHandler } from "utils/commonUtils";
 
 const PostDetail = () => {
   const [breadcrump] = useState([
@@ -23,17 +25,8 @@ const PostDetail = () => {
 
   useEffect(() => {
     if (postId) {
-      const handleResponse = (res) => {
-        const { status } = res;
-        if (status !== 200) {
-          new Error("Data call is unsuccessful!");
-        } else {
-          return res.json();
-        }
-      };
-
       getPostById(postId)
-        .then(handleResponse)
+        .then(responeStatusHandler)
         .then((jsonData) => {
           jsonData.img = `/assets/img/dummy${
             Number.parseInt(Math.random() * 6) + 1
@@ -69,6 +62,7 @@ const PostDetail = () => {
               />
             )}
             <Recommendations />
+            <Comments postId={postData.id} />
           </Col>
           <Col lg={3} className="p-0">
             <SideBar className="sidebar mt-4" />

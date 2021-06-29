@@ -216,7 +216,20 @@ h6 {
 .thumbnail-img {
   max-width: 5rem;
 }
-@mixin name {
+
+.inline-header {
+  display: flex;
+  gap: 1rem;
+}
+
+.comment-title {
+  text-transform: capitalize;
+  font-family: $primary-font;
+  color: $tertiary-color;
+}
+
+.muted-date {
+  color: rgba(127, 140, 141, 0.6) !important;
 }
 
 .green-button {

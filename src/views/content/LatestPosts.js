@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Card from "react-bootstrap/Card";
 import Spinner from "react-bootstrap/Spinner";
 
-import { keyGenerator } from "utils/commonUtils";
+import { keyGenerator, responeStatusHandler } from "utils/commonUtils";
 import SideCardTemplate from "components/SideCardTemplate";
 import { getAllPosts } from "service/posts";
 import ThumbnailPost from "components/ThumbnailPost";
@@ -12,17 +12,8 @@ const LatestPosts = (props) => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    const handleResponse = (res) => {
-      const { status } = res;
-      if (status !== 200) {
-        new Error("Data call is unsuccessful!");
-      } else {
-        return res.json();
-      }
-    };
-
     getAllPosts()
-      .then(handleResponse)
+      .then(responeStatusHandler)
       .then((jsonData) => {
         const postData = jsonData.slice(-5).map((item) => {
           item.img = `/assets/img/dummy${

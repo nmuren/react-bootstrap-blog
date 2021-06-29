@@ -4,7 +4,7 @@ import Spinner from "react-bootstrap/Spinner";
 import ListGroup from "react-bootstrap/ListGroup";
 import { Link } from "react-router-dom";
 
-import { keyGenerator } from "utils/commonUtils";
+import { keyGenerator, responeStatusHandler } from "utils/commonUtils";
 import SideCardTemplate from "components/SideCardTemplate";
 import { getAllComments } from "service/comments";
 
@@ -13,17 +13,8 @@ const RecentComments = (props) => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    const handleResponse = (res) => {
-      const { status } = res;
-      if (status !== 200) {
-        new Error("Data call is unsuccessful!");
-      } else {
-        return res.json();
-      }
-    };
-
     getAllComments()
-      .then(handleResponse)
+      .then(responeStatusHandler)
       .then((jsonData) => {
         const postData = jsonData.slice(-5).map((item) => {
           item.img = `/assets/img/dummy${
@@ -58,7 +49,12 @@ const RecentComments = (props) => {
                 key={keyGenerator()}
               >
                 <Link to={`/post/${item.postId}`}>
-                  <span className="black-text">{item.email.split("@")[0]}</span>
+                  <span className="black-text">
+                    {item.email
+                      .split("@")[0]
+                      .replace("_", " ")
+                      .replace(".", " ")}
+                  </span>
                   <span className="text-muted"> on </span>
                   <span className="black-text">{item.name}</span>
                 </Link>

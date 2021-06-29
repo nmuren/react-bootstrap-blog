@@ -6,7 +6,7 @@ import Spinner from "react-bootstrap/Spinner";
 import StyledCard from "components/StyledCard";
 import SideCardTemplate from "components/SideCardTemplate";
 import { getAllPosts } from "service/posts";
-import { keyGenerator } from "utils/commonUtils";
+import { keyGenerator, responeStatusHandler } from "utils/commonUtils";
 
 const Recommendation = () => {
   const [loading, setLoading] = useState(true);
@@ -33,17 +33,8 @@ const Recommendation = () => {
   };
 
   useEffect(() => {
-    const handleResponse = (res) => {
-      const { status } = res;
-      if (status !== 200) {
-        new Error("Data call is unsuccessful!");
-      } else {
-        return res.json();
-      }
-    };
-
     getAllPosts()
-      .then(handleResponse)
+      .then(responeStatusHandler)
       .then((jsonData) => {
         jsonData.forEach((item) => {
           item.img = `/assets/img/dummy${

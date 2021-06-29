@@ -6,7 +6,7 @@ import { useLocation } from "react-router-dom";
 
 import { getAllPosts } from "service/posts";
 import StyledCard from "components/StyledCard";
-import { keyGenerator } from "utils/commonUtils";
+import { keyGenerator, responeStatusHandler } from "utils/commonUtils";
 import { getAllUsers } from "service/users";
 import Pagination from "components/Pagination";
 
@@ -34,18 +34,9 @@ const BlogPosts = (props) => {
   }, [data, active]);
 
   useEffect(() => {
-    const handleResponse = (res) => {
-      const { status } = res;
-      if (status !== 200) {
-        new Error("Data call is unsuccessful!");
-      } else {
-        return res.json();
-      }
-    };
-
     const postPromise = new Promise((resolve) => {
       getAllPosts()
-        .then(handleResponse)
+        .then(responeStatusHandler)
         .then((jsonData) => {
           const postData = [];
           jsonData.forEach((item) => {
@@ -68,7 +59,7 @@ const BlogPosts = (props) => {
 
     const authorPromise = new Promise((resolve) => {
       getAllUsers()
-        .then(handleResponse)
+        .then(responeStatusHandler)
         .then((jsonData) => {
           let authorMap = new Map();
           jsonData.forEach((item) => {

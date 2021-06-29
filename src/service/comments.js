@@ -3,5 +3,5 @@ export const getAllComments = () => {
 };
 
 export const getCommentsByPostId = (id) => {
-  return fetch(`https://jsonplaceholder.typicode.com/comments?userId=${id}`);
+  return fetch(`https://jsonplaceholder.typicode.com/comments?postId=${id}`);
 };

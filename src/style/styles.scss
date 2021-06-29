@@ -32,9 +32,14 @@ h6 {
 .black-text {
   color: $primary-text-color;
 }
+
 .space-between {
   display: flex;
   justify-content: space-between;
+}
+
+.italic-text {
+  font-style: italic;
 }
 
 .logo-container {
@@ -169,6 +174,13 @@ h6 {
       border: none;
     }
   }
+}
+
+.thumbnail-title {
+  @include text-line-limit(2);
+  text-transform: capitalize;
+  font-family: $secondary-font;
+  font-weight: bold;
 }
 
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;0,700;1,400&display=swap");

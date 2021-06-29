@@ -3,15 +3,12 @@ import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
 
 import { keyGenerator } from "utils/commonUtils";
+import SideCardTemplate from "./SideCardTemplate";
 
 const SideList = (props) => {
   const { title, items } = props;
   return (
-    <Card className="mt-5">
-      <Card.Title className="px-4 pt-4">{title}</Card.Title>
-      <Card.Subtitle>
-        <hr className="ml-4 mt-2" />
-      </Card.Subtitle>
+    <SideCardTemplate title={title}>
       <Card.Body className="pt-0">
         <ListGroup variant="flush">
           {items.map((item) => (
@@ -26,7 +23,7 @@ const SideList = (props) => {
           ))}
         </ListGroup>
       </Card.Body>
-    </Card>
+    </SideCardTemplate>
   );
 };
 

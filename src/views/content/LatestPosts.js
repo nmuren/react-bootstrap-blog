@@ -49,7 +49,9 @@ const LatestPosts = (props) => {
             <span className="sr-only">Loading...</span>
           </Spinner>
         ) : data.length > 0 ? (
-          data.map((item) => <ThumbnailPost item={item} key={keyGenerator()} />)
+          data.map((item) => (
+            <ThumbnailPost item={item} className="mb-3" key={keyGenerator()} />
+          ))
         ) : (
           <span>No recent post...</span>
         )}

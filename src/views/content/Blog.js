@@ -3,9 +3,9 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
-import TitleBar from "views/TitleBar";
+import TitleBar from "views/layout/TitleBar";
 import BlogPosts from "views/content/BlogPosts";
-import SideBar from "views/SideBar";
+import SideBar from "views/layout/SideBar";
 import SearchBox from "components/SearchBox";
 
 const Blog = () => {

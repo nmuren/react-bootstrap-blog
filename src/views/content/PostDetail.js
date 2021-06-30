@@ -5,8 +5,8 @@ import Col from "react-bootstrap/Col";
 import Spinner from "react-bootstrap/Spinner";
 import { useParams } from "react-router-dom";
 
-import TitleBar from "views/TitleBar";
-import SideBar from "views/SideBar";
+import TitleBar from "views/layout/TitleBar";
+import SideBar from "views/layout/SideBar";
 import StyledCard from "components/StyledCard";
 import { getPostById } from "service/posts";
 import Recommendations from "views/content/Recommendations";

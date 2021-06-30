@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -10,7 +10,7 @@ import SideCardTemplate from "components/SideCardTemplate";
 import { keyGenerator } from "utils/commonUtils";
 
 const Comments = (props) => {
-  const { callback, parentId } = props;
+  const { callback, parentId, postId } = props;
   const [name, setName] = useState({ value: "", status: -1 });
   const [email, setEmail] = useState({ value: "", status: -1 });
   const [website, setWebsite] = useState({ value: "", status: -1 });
@@ -108,8 +108,12 @@ const Comments = (props) => {
     event.preventDefault();
   };
 
+  useEffect(() => {
+    setSuccess(false);
+  }, [postId]);
+
   return (
-    <div className="recommendation">
+    <div className="recommendation mb-5">
       <SideCardTemplate title="LEAVE A COMMENT">
         <Card.Body className="pt-0 mt-2">
           <Form onSubmit={submitHandler}>

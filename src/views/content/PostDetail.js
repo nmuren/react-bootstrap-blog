@@ -74,6 +74,7 @@ const PostDetail = () => {
             />
             <AddComment
               parentId={activeId}
+              postId={postData.id}
               callback={(newComment) => {
                 setDummyComment([...dummyComment, newComment]);
               }}

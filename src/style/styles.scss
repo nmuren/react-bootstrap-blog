@@ -145,7 +145,7 @@ h6 {
     font-family: $secondary-font;
     font-weight: bold;
     @include text-line-limit(2);
-    height: 2.5em;
+    height: 3rem;
   }
 
   .card-subtitle {

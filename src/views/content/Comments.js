@@ -12,6 +12,12 @@ const Comments = (props) => {
   const { postId, dummyComment } = props;
   const [loading, setLoading] = useState(true);
   const [postComments, setPostComments] = useState([]);
+  const [activeId, setActiveId] = useState(0);
+
+  const handleReply = (event) => {
+    const newID = Number.parseInt(event.target.name);
+    setActiveId(activeId === newID ? 0 : newID);
+  };
 
   useEffect(() => {
     if (postId) {
@@ -45,14 +51,18 @@ const Comments = (props) => {
               .toString()
               .padStart(2, "0")} COMMENTS`}
           >
-            <Card.Body className="pt-0 mt-2">
+            <Card.Body className="pt-0 ">
               <ListGroup variant="flush">
                 {postComments.map((item) => (
                   <ListGroup.Item
-                    className="space-between px-1"
+                    className="space-between px-1 py-4  "
                     key={keyGenerator()}
                   >
-                    <CommentCard comment={item} />
+                    <CommentCard
+                      comment={item}
+                      isActive={activeId === item.id}
+                      onReply={handleReply}
+                    />
                   </ListGroup.Item>
                 ))}
               </ListGroup>

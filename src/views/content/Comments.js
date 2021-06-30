@@ -9,10 +9,10 @@ import { keyGenerator, responeStatusHandler } from "utils/commonUtils";
 import CommentCard from "components/CommentCard";
 
 const Comments = (props) => {
-  const { postId, dummyComment } = props;
+  const { postId, dummyComment, activeId, setActiveId } = props;
   const [loading, setLoading] = useState(true);
   const [postComments, setPostComments] = useState([]);
-  const [activeId, setActiveId] = useState(0);
+  // const [activeId, setActiveId] = useState(0);
 
   const handleReply = (event) => {
     const newID = Number.parseInt(event.target.name);
@@ -31,7 +31,10 @@ const Comments = (props) => {
             let [, month, day, year] = new Date().toDateString().split(" ");
             item.date = `${day} ${month}, ${year}`;
           });
-          setPostComments([...jsonData, ...dummyComment]);
+          setPostComments([
+            ...jsonData,
+            ...dummyComment.filter((item) => item.parentId === 0),
+          ]);
           setLoading(false);
         })
         .catch(console.error);
@@ -54,16 +57,35 @@ const Comments = (props) => {
             <Card.Body className="pt-0 ">
               <ListGroup variant="flush">
                 {postComments.map((item) => (
-                  <ListGroup.Item
-                    className="space-between px-1 py-4  "
-                    key={keyGenerator()}
-                  >
-                    <CommentCard
-                      comment={item}
-                      isActive={activeId === item.id}
-                      onReply={handleReply}
-                    />
-                  </ListGroup.Item>
+                  <React.Fragment key={keyGenerator()}>
+                    <ListGroup.Item
+                      className="space-between px-1 py-4  "
+                      key={keyGenerator()}
+                    >
+                      <CommentCard
+                        comment={item}
+                        isActive={activeId === item.id}
+                        onReply={handleReply}
+                      />
+                    </ListGroup.Item>
+                    {dummyComment &&
+                      dummyComment.map((child) => (
+                        <React.Fragment key={keyGenerator()}>
+                          {child.parentId === item.id && (
+                            <ListGroup.Item
+                              className="space-between px-1 py-4 ml-5 "
+                              key={keyGenerator()}
+                            >
+                              <CommentCard
+                                comment={child}
+                                isActive={activeId === child.id}
+                                onReply={handleReply}
+                              />
+                            </ListGroup.Item>
+                          )}
+                        </React.Fragment>
+                      ))}
+                  </React.Fragment>
                 ))}
               </ListGroup>
             </Card.Body>

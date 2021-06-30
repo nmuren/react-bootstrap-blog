@@ -24,6 +24,7 @@ const PostDetail = () => {
   const [postData, setPostData] = useState({});
   const [dummyComment, setDummyComment] = useState([]);
   const { postId } = useParams();
+  const [activeId, setActiveId] = useState(0);
 
   useEffect(() => {
     if (postId) {
@@ -65,8 +66,14 @@ const PostDetail = () => {
               />
             )}
             <Recommendations />
-            <Comments postId={postData.id} dummyComment={dummyComment} />
+            <Comments
+              postId={postData.id}
+              dummyComment={dummyComment}
+              activeId={activeId}
+              setActiveId={setActiveId}
+            />
             <AddComment
+              parentId={activeId}
               callback={(newComment) => {
                 setDummyComment([...dummyComment, newComment]);
               }}

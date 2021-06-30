@@ -7,9 +7,10 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
 import SideCardTemplate from "components/SideCardTemplate";
+import { keyGenerator } from "utils/commonUtils";
 
 const Comments = (props) => {
-  const { callback } = props;
+  const { callback, parentId } = props;
   const [name, setName] = useState({ value: "", status: -1 });
   const [email, setEmail] = useState({ value: "", status: -1 });
   const [website, setWebsite] = useState({ value: "", status: -1 });
@@ -92,6 +93,8 @@ const Comments = (props) => {
   const submitHandler = (event) => {
     let [, month, day, year] = new Date().toDateString().split(" ");
     const commentData = {
+      id: 999 + keyGenerator(),
+      parentId: parentId > 999 ? 0 : parentId,
       name: name.value,
       email: name.value, //email.value,
       website: website.value,

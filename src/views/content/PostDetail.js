@@ -10,6 +10,7 @@ import SideBar from "views/SideBar";
 import StyledCard from "components/StyledCard";
 import { getPostById } from "service/posts";
 import Recommendations from "views/content/Recommendations";
+import AddComment from "views/content/AddComment";
 import Comments from "views/content/Comments";
 import { responeStatusHandler } from "utils/commonUtils";
 
@@ -21,6 +22,7 @@ const PostDetail = () => {
   ]);
   const [loading, setLoading] = useState(true);
   const [postData, setPostData] = useState({});
+  const [dummyComment, setDummyComment] = useState([]);
   const { postId } = useParams();
 
   useEffect(() => {
@@ -36,6 +38,7 @@ const PostDetail = () => {
 
           breadcrump[2].title = jsonData.title;
           setPostData(jsonData);
+          setDummyComment([]);
           setLoading(false);
         })
         .catch(console.error);
@@ -62,7 +65,12 @@ const PostDetail = () => {
               />
             )}
             <Recommendations />
-            <Comments postId={postData.id} />
+            <Comments postId={postData.id} dummyComment={dummyComment} />
+            <AddComment
+              callback={(newComment) => {
+                setDummyComment([...dummyComment, newComment]);
+              }}
+            />
           </Col>
           <Col lg={3} className="p-0">
             <SideBar className="sidebar mt-4" />

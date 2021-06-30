@@ -9,7 +9,7 @@ import { keyGenerator, responeStatusHandler } from "utils/commonUtils";
 import CommentCard from "components/CommentCard";
 
 const Comments = (props) => {
-  const { postId } = props;
+  const { postId, dummyComment } = props;
   const [loading, setLoading] = useState(true);
   const [postComments, setPostComments] = useState([]);
 
@@ -25,12 +25,12 @@ const Comments = (props) => {
             let [, month, day, year] = new Date().toDateString().split(" ");
             item.date = `${day} ${month}, ${year}`;
           });
-          setPostComments(jsonData);
+          setPostComments([...jsonData, ...dummyComment]);
           setLoading(false);
         })
         .catch(console.error);
     }
-  }, [postId]);
+  }, [postId, dummyComment]);
 
   return (
     <>

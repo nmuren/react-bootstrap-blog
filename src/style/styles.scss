@@ -270,4 +270,18 @@ h6 {
   background-color: $primary-color;
 }
 
+.form-control,
+.comment-submit {
+  border-radius: 0;
+  width: 100%;
+  &:focus {
+    border-color: $primary-text-color;
+    box-shadow: none;
+  }
+}
+
+textarea.form-control {
+  height: 5.7rem;
+}
+
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;0,700;1,400&display=swap");

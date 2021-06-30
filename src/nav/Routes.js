@@ -6,10 +6,7 @@ import PostDetail from "views/content/PostDetail";
 
 const Routes = () => (
   <Switch>
-    <Route path="/blog">
-      <Blog />
-    </Route>
-    <Route path="/blog/:search">
+    <Route path={["/blog", "/blog/:search"]}>
       <Blog />
     </Route>
     <Route path="/post/:postId">

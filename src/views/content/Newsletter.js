@@ -5,8 +5,7 @@ import Form from "react-bootstrap/Form";
 
 import SideCardTemplate from "components/SideCardTemplate";
 
-const Newsletter = (props) => {
-  const { title } = props;
+const Newsletter = ({ title = "" }) => {
   return (
     <SideCardTemplate title={title} className="letter-border">
       <Card.Body className="pt-0 mt-2">

@@ -9,19 +9,14 @@ import topMenuItems from "nav/topMenuItems";
 import { keyGenerator } from "utils/commonUtils";
 import search from "assets/img/search-alternative-icon.png";
 
-const ItemGenerator = (props) => {
-  const {
-    item: { title, path, children },
-    prefix = "",
-  } = props;
-
-  const linkPath = `${prefix}/${path}`;
+const ItemGenerator = ({ item = {}, prefix = "" }) => {
+  const linkPath = `${prefix}/${item.path}`;
 
   return (
     <>
-      {children ? (
-        <NavDropdown title={title}>
-          {children.map((child) => (
+      {item.children ? (
+        <NavDropdown title={item.title}>
+          {item.children.map((child) => (
             <ItemGenerator
               item={child}
               prefix={linkPath}
@@ -31,7 +26,7 @@ const ItemGenerator = (props) => {
         </NavDropdown>
       ) : (
         <LinkContainer to={linkPath}>
-          <Nav.Link active={false}>{title}</Nav.Link>
+          <Nav.Link active={false}>{item.title}</Nav.Link>
         </LinkContainer>
       )}
     </>

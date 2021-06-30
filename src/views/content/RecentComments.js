@@ -8,7 +8,7 @@ import { keyGenerator, responeStatusHandler } from "utils/commonUtils";
 import SideCardTemplate from "components/SideCardTemplate";
 import { getAllComments } from "service/comments";
 
-const RecentComments = (props) => {
+const RecentComments = ({ title = "", className = "" }) => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
 
@@ -34,7 +34,7 @@ const RecentComments = (props) => {
   }, []);
 
   return (
-    <SideCardTemplate title={props.title} className={props.className}>
+    <SideCardTemplate title={title} className={className}>
       <Card.Body className="pt-0">
         {loading && data ? (
           <Spinner animation="border" role="status">

@@ -26,9 +26,7 @@ const breadcrumpGenerator = (breadcrump = []) => {
   return JSX;
 };
 
-const TitleBar = (props) => {
-  const { breadcrump = [], title } = props;
-
+const TitleBar = ({ breadcrump = [], title = "" }) => {
   return (
     <Container fluid className="p-0 titleBar">
       <Container>

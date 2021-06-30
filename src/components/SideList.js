@@ -5,8 +5,7 @@ import ListGroup from "react-bootstrap/ListGroup";
 import { keyGenerator } from "utils/commonUtils";
 import SideCardTemplate from "components/SideCardTemplate";
 
-const SideList = (props) => {
-  const { title, items } = props;
+const SideList = ({ title = "", items = [] }) => {
   return (
     <SideCardTemplate title={title}>
       <Card.Body className="pt-0">

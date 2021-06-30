@@ -5,8 +5,7 @@ import Button from "react-bootstrap/Button";
 import { keyGenerator } from "utils/commonUtils";
 import SideCardTemplate from "components/SideCardTemplate";
 
-const TagList = (props) => {
-  const { title, items } = props;
+const TagList = ({ title = "", items = [] }) => {
   return (
     <SideCardTemplate title={title}>
       <Card.Body className="pt-0 mt-2">

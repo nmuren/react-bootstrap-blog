@@ -6,12 +6,11 @@ import { Link } from "react-router-dom";
 
 import search from "assets/img/search-alternative-icon.png";
 
-const SearchBox = (props) => {
-  const { baseUrl } = props;
+const SearchBox = ({ baseUrl = "", className = "" }) => {
   const [searchText, setSearchText] = useState("");
 
   return (
-    <Card className={props.className}>
+    <Card className={className}>
       <Card.Body>
         <InputGroup className="custom-searcbox">
           <Form.Control

@@ -5,13 +5,11 @@ import Col from "react-bootstrap/Col";
 import blackArrow from "assets/img/curved-arrow-icon.png";
 import greenArrow from "assets/img/curved-arrow-alternative-icon.png";
 
-const CommentCard = (props) => {
-  const { comment, isActive, onReply } = props;
-
+const CommentCard = ({ comment = {}, isActive, onReply, className = "" }) => {
   const [onHover, setOnHover] = useState(false);
 
   return (
-    <Row className={props.className}>
+    <Row className={className}>
       <Col className="thumbnail-img">
         <img src={comment.img} alt="post" width="80" height="80" />
       </Col>

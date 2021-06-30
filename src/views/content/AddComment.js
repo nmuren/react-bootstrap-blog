@@ -9,8 +9,7 @@ import Button from "react-bootstrap/Button";
 import SideCardTemplate from "components/SideCardTemplate";
 import { keyGenerator } from "utils/commonUtils";
 
-const Comments = (props) => {
-  const { callback, parentId, postId } = props;
+const Comments = ({ callback, parentId, postId }) => {
   const [name, setName] = useState({ value: "", status: -1 });
   const [email, setEmail] = useState({ value: "", status: -1 });
   const [website, setWebsite] = useState({ value: "", status: -1 });

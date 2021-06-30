@@ -3,11 +3,10 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import { Link } from "react-router-dom";
 
-const ThumbnailPost = (props) => {
-  const { item } = props;
+const ThumbnailPost = ({ item = {}, className = "" }) => {
   return (
     <Link to={item.url}>
-      <Row className={props.className}>
+      <Row className={className}>
         <Col className="thumbnail-img">
           <img src={item.img} alt="post" width="80" height="80" />
         </Col>

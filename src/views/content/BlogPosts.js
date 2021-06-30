@@ -12,7 +12,7 @@ import Pagination from "components/Pagination";
 
 const POST_PER_PAGE = 12;
 
-const BlogPosts = (props) => {
+const BlogPosts = ({ className = "" }) => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
   const [authors, setAuthors] = useState();
@@ -79,7 +79,7 @@ const BlogPosts = (props) => {
 
   return (
     <div
-      className={`${props.className} ${
+      className={`${className} ${
         loading && pagedData ? "center-item mt-5" : ""
       }`}
     >

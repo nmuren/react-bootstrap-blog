@@ -5,8 +5,15 @@ import { Link } from "react-router-dom";
 import user from "assets/img/user-icon.png";
 import calendar from "assets/img/calendar-icon.png";
 
-const StyledCard = (props) => {
-  const { url, img, title, author, date, text, notFullHeight = false } = props;
+const StyledCard = ({
+  url = "",
+  img = "",
+  title = "",
+  author,
+  date,
+  text = "",
+  notFullHeight = false,
+}) => {
   return (
     <Card className={`styled-card ${notFullHeight ? "not-full-height" : ""}`}>
       <Card.Img variant="top" src={img} />

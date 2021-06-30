@@ -8,7 +8,7 @@ import SideList from "components/SideList";
 import TagList from "components/TagList";
 import Banner from "components/Banner";
 
-const SideBar = (props) => {
+const SideBar = ({ className = "" }) => {
   const categoryList = [
     {
       text: "Advertising",
@@ -81,7 +81,7 @@ const SideBar = (props) => {
   ];
 
   return (
-    <div className={props.className}>
+    <div className={className}>
       <SearchBox baseUrl="/blog" />
       <SideList title="CATEGORIES" items={categoryList} />
       <Newsletter title="NEWSLETTER" />

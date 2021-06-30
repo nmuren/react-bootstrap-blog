@@ -8,8 +8,7 @@ import { getCommentsByPostId } from "service/comments";
 import { keyGenerator, responeStatusHandler } from "utils/commonUtils";
 import CommentCard from "components/CommentCard";
 
-const Comments = (props) => {
-  const { postId, dummyComment, activeId, setActiveId } = props;
+const Comments = ({ postId, dummyComment, activeId, setActiveId }) => {
   const [loading, setLoading] = useState(true);
   const [postComments, setPostComments] = useState([]);
   // const [activeId, setActiveId] = useState(0);

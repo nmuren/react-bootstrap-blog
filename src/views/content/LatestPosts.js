@@ -7,7 +7,7 @@ import SideCardTemplate from "components/SideCardTemplate";
 import { getAllPosts } from "service/posts";
 import ThumbnailPost from "components/ThumbnailPost";
 
-const LatestPosts = (props) => {
+const LatestPosts = ({ title = "", className = "" }) => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
 
@@ -33,7 +33,7 @@ const LatestPosts = (props) => {
   }, []);
 
   return (
-    <SideCardTemplate title={props.title} className={props.className}>
+    <SideCardTemplate title={title} className={className}>
       <Card.Body className="pt-0 mt-2">
         {loading && data ? (
           <Spinner animation="border" role="status">

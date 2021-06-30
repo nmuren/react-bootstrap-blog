@@ -1,8 +1,7 @@
 import React, { useMemo, useState, useEffect } from "react";
 import { keyGenerator } from "utils/commonUtils";
 
-const Pagination = (props) => {
-  const { active, total = 0, dataPerPage = 1, onChange } = props;
+const Pagination = ({ active, total = 0, dataPerPage = 1, onChange }) => {
   const [items, setItems] = useState([]);
 
   const pageCount = useMemo(

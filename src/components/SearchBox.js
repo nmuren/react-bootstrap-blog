@@ -11,7 +11,7 @@ const SearchBox = (props) => {
   const [searchText, setSearchText] = useState("");
 
   return (
-    <Card>
+    <Card className={props.className}>
       <Card.Body>
         <InputGroup className="custom-searcbox">
           <Form.Control

@@ -6,6 +6,7 @@ import Col from "react-bootstrap/Col";
 import TitleBar from "views/TitleBar";
 import BlogPosts from "views/content/BlogPosts";
 import SideBar from "views/SideBar";
+import SearchBox from "components/SearchBox";
 
 const Blog = () => {
   const breadcrump = [
@@ -20,10 +21,11 @@ const Blog = () => {
       <Container className="mt-3">
         <Row>
           <Col lg={9}>
+            <SearchBox baseUrl="/blog" className="mt-4 d-lg-none" />
             <BlogPosts className="main" />
           </Col>
           <Col lg={3} className="p-0">
-            <SideBar className="sidebar mt-4" />
+            <SideBar className="sidebar mt-4 d-none d-lg-block" />
           </Col>
         </Row>
       </Container>
